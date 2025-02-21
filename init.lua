@@ -104,6 +104,10 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
 
+-- Terminal and Title Settings
+vim.opt.title = true
+vim.opt.titlestring = '%t'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
@@ -332,6 +336,19 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
+
+  { -- EasyMotion (Jumps to any visible character on visible screen)
+    'easymotion/vim-easymotion',
+    config = function()
+      -- Example EasyMotion key bindings
+      vim.g.EasyMotion_do_mapping = 0 -- Disable default mappings
+
+      vim.keymap.set('n', '<Leader>f', '<Plug>(easymotion-bd-f)', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>w', '<Plug>(easymotion-bd-w)', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>j', '<Plug>(easymotion-j)', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>k', '<Plug>(easymotion-k)', { noremap = true, silent = true })
+    end,
+  },
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -639,7 +656,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -932,7 +949,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
