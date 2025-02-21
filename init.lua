@@ -360,6 +360,34 @@ require('lazy').setup({
     end,
   },
 
+  { -- Hop.nvim (Jumps to any visible character on visible screen without LSP triggering)
+    'smoka7/hop.nvim',
+    version = '*',
+    opts = {
+      keys = 'asdghklqwertyuiopzxcvbnmfj',
+      quit_key = '<SPC>',
+      multi_windows = true,
+    },
+    keys = {
+      { '<leader>hw', '<cmd>HopWord<cr>', mode = '', desc = 'Hop to all words in the visible buffer; most useful!' },
+      { '<leader>hl', '<cmd>HopLine<cr>', mode = '', desc = 'Hop to the first column of each visible line' },
+      {
+        '<leader>hs',
+        '<cmd>HopLineStart<cr>',
+        mode = '',
+        desc = 'Hop to the first non-whitespace character of each line',
+      },
+      {
+        '<leader>hv',
+        '<cmd>HopVertical<cr>',
+        mode = '',
+        desc = 'Hop to each line, keeping cursor column position the same',
+      },
+      { '<leader>h/', '<cmd>HopPattern<cr>', desc = 'Validate search (`/`) with hints' },
+      { '<leader>ha', '<cmd>HopAnywhere<cr>', mode = '', desc = 'Hop anywhere' },
+    },
+  },
+
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
