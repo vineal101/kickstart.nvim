@@ -125,6 +125,11 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Indentation Settings (might conflict with plugins tpope?)
+vim.opt.autoindent = true
+vim.opt.smarttab = true
+vim.opt.tabstop = 4
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -346,19 +351,6 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
-  { -- EasyMotion (Jumps to any visible character on visible screen)
-    'easymotion/vim-easymotion',
-    config = function()
-      -- Example EasyMotion key bindings
-      vim.g.EasyMotion_do_mapping = 0 -- Disable default mappings
-
-      vim.keymap.set('n', '<Leader>f', '<Plug>(easymotion-bd-f)', { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>w', '<Plug>(easymotion-bd-w)', { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>j', '<Plug>(easymotion-j)', { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>k', '<Plug>(easymotion-k)', { noremap = true, silent = true })
-    end,
-  },
 
   { -- Hop.nvim (Jumps to any visible character on visible screen without LSP triggering)
     'smoka7/hop.nvim',
